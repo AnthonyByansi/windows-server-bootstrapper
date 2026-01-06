@@ -1,0 +1,255 @@
+{
+  "GlobalSettings": {
+    "DefaultInboundAction": "Block",
+    "DefaultOutboundAction": "Allow",
+    "EnableLogging": true,
+    "LogDroppedPackets": true,
+    "LogSuccessfulConnections": false,
+    "LogFilePath": "%SystemRoot%\\System32\\LogFiles\\Firewall\\pfirewall.log",
+    "LogMaxFileSize": 16384
+  },
+  "BaselineRules": [
+    {
+      "Name": "Core Networking - DNS (UDP-In)",
+      "Description": "Allow DNS queries",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "UDP",
+      "LocalPort": "53",
+      "RemotePort": "Any",
+      "Profile": "Any",
+      "Enabled": false,
+      "RequiredRole": "DNS"
+    },
+    {
+      "Name": "Core Networking - DNS (TCP-In)",
+      "Description": "Allow DNS zone transfers",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "53",
+      "RemotePort": "Any",
+      "Profile": "Any",
+      "Enabled": false,
+      "RequiredRole": "DNS"
+    },
+    {
+      "Name": "Web Server - HTTP (TCP-In)",
+      "Description": "Allow HTTP traffic to IIS",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "80",
+      "RemotePort": "Any",
+      "Profile": "Any",
+      "Enabled": false,
+      "RequiredRole": "Web-Server"
+    },
+    {
+      "Name": "Web Server - HTTPS (TCP-In)",
+      "Description": "Allow HTTPS traffic to IIS",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "443",
+      "RemotePort": "Any",
+      "Profile": "Any",
+      "Enabled": false,
+      "RequiredRole": "Web-Server"
+    },
+    {
+      "Name": "Active Directory - LDAP (TCP-In)",
+      "Description": "Allow LDAP traffic",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "389",
+      "RemotePort": "Any",
+      "Profile": "Domain",
+      "Enabled": false,
+      "RequiredRole": "AD-Domain-Services"
+    },
+    {
+      "Name": "Active Directory - LDAPS (TCP-In)",
+      "Description": "Allow Secure LDAP traffic",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "636",
+      "RemotePort": "Any",
+      "Profile": "Domain",
+      "Enabled": false,
+      "RequiredRole": "AD-Domain-Services"
+    },
+    {
+      "Name": "Active Directory - Kerberos (TCP-In)",
+      "Description": "Allow Kerberos authentication",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "88",
+      "RemotePort": "Any",
+      "Profile": "Domain",
+      "Enabled": false,
+      "RequiredRole": "AD-Domain-Services"
+    },
+    {
+      "Name": "Active Directory - Kerberos (UDP-In)",
+      "Description": "Allow Kerberos authentication",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "UDP",
+      "LocalPort": "88",
+      "RemotePort": "Any",
+      "Profile": "Domain",
+      "Enabled": false,
+      "RequiredRole": "AD-Domain-Services"
+    },
+    {
+      "Name": "Failover Clustering - RPC (TCP-In)",
+      "Description": "Allow cluster RPC traffic",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "135",
+      "RemotePort": "Any",
+      "Profile": "Domain",
+      "Enabled": false,
+      "RequiredRole": "Failover-Clustering"
+    },
+    {
+      "Name": "Hyper-V - WMI (TCP-In)",
+      "Description": "Allow Hyper-V management",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "135",
+      "RemotePort": "Any",
+      "Profile": "Domain",
+      "Enabled": false,
+      "RequiredRole": "Hyper-V"
+    },
+    {
+      "Name": "Hyper-V - Live Migration (TCP-In)",
+      "Description": "Allow VM live migration",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "6600",
+      "RemotePort": "Any",
+      "Profile": "Domain",
+      "Enabled": false,
+      "RequiredRole": "Hyper-V"
+    }
+  ],
+  "SecurityRules": [
+    {
+      "Name": "Remote Desktop - Secure (TCP-In)",
+      "Description": "Allow RDP with NLA",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "3389",
+      "RemotePort": "Any",
+      "Profile": "Domain,Private",
+      "Enabled": true,
+      "RequiredRole": null,
+      "RemoteAddress": "LocalSubnet"
+    },
+    {
+      "Name": "WinRM - HTTPS (TCP-In)",
+      "Description": "Allow secure Windows Remote Management",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "5986",
+      "RemotePort": "Any",
+      "Profile": "Domain,Private",
+      "Enabled": true,
+      "RequiredRole": null,
+      "RemoteAddress": "LocalSubnet"
+    },
+    {
+      "Name": "File and Printer Sharing - SMB (TCP-In)",
+      "Description": "Allow SMB file sharing",
+      "Direction": "Inbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "445",
+      "RemotePort": "Any",
+      "Profile": "Domain,Private",
+      "Enabled": true,
+      "RequiredRole": null,
+      "RemoteAddress": "LocalSubnet"
+    },
+    {
+      "Name": "Windows Defender - Cloud (TCP-Out)",
+      "Description": "Allow Windows Defender cloud protection",
+      "Direction": "Outbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "Any",
+      "RemotePort": "443",
+      "Profile": "Any",
+      "Enabled": true,
+      "RequiredRole": null
+    },
+    {
+      "Name": "Windows Update (TCP-Out)",
+      "Description": "Allow Windows Update traffic",
+      "Direction": "Outbound",
+      "Action": "Allow",
+      "Protocol": "TCP",
+      "LocalPort": "Any",
+      "RemotePort": "80,443",
+      "Profile": "Any",
+      "Enabled": true,
+      "RequiredRole": null
+    },
+    {
+      "Name": "NTP - Time Sync (UDP-Out)",
+      "Description": "Allow NTP time synchronization",
+      "Direction": "Outbound",
+      "Action": "Allow",
+      "Protocol": "UDP",
+      "LocalPort": "Any",
+      "RemotePort": "123",
+      "Profile": "Any",
+      "Enabled": true,
+      "RequiredRole": null
+    }
+  ],
+  "BlockRules": [
+    {
+      "Name": "Block NetBIOS (TCP-In)",
+      "Description": "Block NetBIOS Name Service",
+      "Direction": "Inbound",
+      "Action": "Block",
+      "Protocol": "TCP",
+      "LocalPort": "137,138,139",
+      "Profile": "Public",
+      "Enabled": true
+    },
+    {
+      "Name": "Block NetBIOS (UDP-In)",
+      "Description": "Block NetBIOS Name Service",
+      "Direction": "Inbound",
+      "Action": "Block",
+      "Protocol": "UDP",
+      "LocalPort": "137,138",
+      "Profile": "Public",
+      "Enabled": true
+    },
+    {
+      "Name": "Block SMBv1 (TCP-In)",
+      "Description": "Block legacy SMB protocol",
+      "Direction": "Inbound",
+      "Action": "Block",
+      "Protocol": "TCP",
+      "LocalPort": "445",
+      "Profile": "Public",
+      "Enabled": true,
+      "Program": "System"
+    }
+  ]
+}

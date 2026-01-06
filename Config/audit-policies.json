@@ -1,0 +1,180 @@
+{
+  "AuditPolicies": {
+    "Basic": {
+      "Description": "Essential audit logging",
+      "Categories": {
+        "Account Logon": {
+          "Credential Validation": "Success,Failure"
+        },
+        "Account Management": {
+          "User Account Management": "Success,Failure",
+          "Security Group Management": "Success,Failure"
+        },
+        "Logon/Logoff": {
+          "Logon": "Success,Failure",
+          "Logoff": "Success"
+        },
+        "Policy Change": {
+          "Audit Policy Change": "Success,Failure"
+        },
+        "System": {
+          "Security State Change": "Success,Failure",
+          "Security System Extension": "Success,Failure"
+        }
+      }
+    },
+    "Moderate": {
+      "Description": "Comprehensive audit logging for most environments",
+      "Categories": {
+        "Account Logon": {
+          "Credential Validation": "Success,Failure",
+          "Kerberos Service Ticket Operations": "Success,Failure",
+          "Other Account Logon Events": "Success,Failure"
+        },
+        "Account Management": {
+          "User Account Management": "Success,Failure",
+          "Computer Account Management": "Success,Failure",
+          "Security Group Management": "Success,Failure",
+          "Distribution Group Management": "Success",
+          "Other Account Management Events": "Success,Failure"
+        },
+        "Detailed Tracking": {
+          "Process Creation": "Success",
+          "Process Termination": "Success",
+          "DPAPI Activity": "Success,Failure"
+        },
+        "Logon/Logoff": {
+          "Logon": "Success,Failure",
+          "Logoff": "Success",
+          "Account Lockout": "Failure",
+          "Special Logon": "Success",
+          "Other Logon/Logoff Events": "Success,Failure"
+        },
+        "Object Access": {
+          "File System": "Failure",
+          "Registry": "Failure",
+          "Removable Storage": "Success,Failure",
+          "Central Policy Staging": "Failure"
+        },
+        "Policy Change": {
+          "Audit Policy Change": "Success,Failure",
+          "Authentication Policy Change": "Success,Failure",
+          "Authorization Policy Change": "Success,Failure",
+          "MPSSVC Rule-Level Policy Change": "Success,Failure"
+        },
+        "Privilege Use": {
+          "Sensitive Privilege Use": "Success,Failure"
+        },
+        "System": {
+          "Security State Change": "Success,Failure",
+          "Security System Extension": "Success,Failure",
+          "System Integrity": "Success,Failure",
+          "IPsec Driver": "Success,Failure",
+          "Other System Events": "Success,Failure"
+        }
+      }
+    },
+    "Strict": {
+      "Description": "Maximum audit logging for high-security environments",
+      "Categories": {
+        "Account Logon": {
+          "Credential Validation": "Success,Failure",
+          "Kerberos Authentication Service": "Success,Failure",
+          "Kerberos Service Ticket Operations": "Success,Failure",
+          "Other Account Logon Events": "Success,Failure"
+        },
+        "Account Management": {
+          "User Account Management": "Success,Failure",
+          "Computer Account Management": "Success,Failure",
+          "Security Group Management": "Success,Failure",
+          "Distribution Group Management": "Success,Failure",
+          "Application Group Management": "Success,Failure",
+          "Other Account Management Events": "Success,Failure"
+        },
+        "Detailed Tracking": {
+          "Process Creation": "Success",
+          "Process Termination": "Success",
+          "DPAPI Activity": "Success,Failure",
+          "RPC Events": "Success,Failure",
+          "Plug and Play Events": "Success",
+          "Token Right Adjusted Events": "Success"
+        },
+        "DS Access": {
+          "Directory Service Access": "Failure",
+          "Directory Service Changes": "Success,Failure",
+          "Directory Service Replication": "Success,Failure"
+        },
+        "Logon/Logoff": {
+          "Logon": "Success,Failure",
+          "Logoff": "Success",
+          "Account Lockout": "Failure",
+          "IPsec Main Mode": "Success,Failure",
+          "IPsec Quick Mode": "Success,Failure",
+          "IPsec Extended Mode": "Success,Failure",
+          "Special Logon": "Success",
+          "Other Logon/Logoff Events": "Success,Failure",
+          "Network Policy Server": "Success,Failure"
+        },
+        "Object Access": {
+          "File System": "Success,Failure",
+          "Registry": "Success,Failure",
+          "Kernel Object": "Success,Failure",
+          "SAM": "Success,Failure",
+          "Certification Services": "Success,Failure",
+          "Application Generated": "Success,Failure",
+          "Handle Manipulation": "Success,Failure",
+          "File Share": "Success,Failure",
+          "Filtering Platform Packet Drop": "Failure",
+          "Filtering Platform Connection": "Success,Failure",
+          "Other Object Access Events": "Success,Failure",
+          "Removable Storage": "Success,Failure",
+          "Central Policy Staging": "Success,Failure"
+        },
+        "Policy Change": {
+          "Audit Policy Change": "Success,Failure",
+          "Authentication Policy Change": "Success,Failure",
+          "Authorization Policy Change": "Success,Failure",
+          "MPSSVC Rule-Level Policy Change": "Success,Failure",
+          "Filtering Platform Policy Change": "Success,Failure",
+          "Other Policy Change Events": "Success,Failure"
+        },
+        "Privilege Use": {
+          "Sensitive Privilege Use": "Success,Failure",
+          "Non Sensitive Privilege Use": "Success,Failure",
+          "Other Privilege Use Events": "Success,Failure"
+        },
+        "System": {
+          "Security State Change": "Success,Failure",
+          "Security System Extension": "Success,Failure",
+          "System Integrity": "Success,Failure",
+          "IPsec Driver": "Success,Failure",
+          "Other System Events": "Success,Failure"
+        }
+      }
+    }
+  },
+  "EventLogSettings": {
+    "Security": {
+      "MaximumSize": 2097152,
+      "RetentionDays": 90,
+      "RestrictGuestAccess": true
+    },
+    "System": {
+      "MaximumSize": 1048576,
+      "RetentionDays": 60,
+      "RestrictGuestAccess": true
+    },
+    "Application": {
+      "MaximumSize": 1048576,
+      "RetentionDays": 60,
+      "RestrictGuestAccess": true
+    }
+  },
+  "AdvancedAuditSettings": {
+    "EnableCommandLineLogging": true,
+    "EnablePowerShellScriptBlockLogging": true,
+    "EnablePowerShellModuleLogging": true,
+    "EnablePowerShellTranscription": true,
+    "PowerShellTranscriptionPath": "C:\\PSTranscripts"
+  }
+}

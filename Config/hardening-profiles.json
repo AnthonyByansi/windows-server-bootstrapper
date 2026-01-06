@@ -1,0 +1,189 @@
+{
+  "Profiles": {
+    "Basic": {
+      "Description": "Essential security hardening with minimal disruption",
+      "PasswordPolicy": {
+        "MinimumPasswordLength": 10,
+        "PasswordComplexity": true,
+        "PasswordHistorySize": 12,
+        "MaximumPasswordAge": 90,
+        "MinimumPasswordAge": 1,
+        "LockoutThreshold": 10,
+        "LockoutDuration": 15,
+        "LockoutWindow": 15
+      },
+      "AccountPolicy": {
+        "RenameAdministrator": true,
+        "NewAdministratorName": "SysAdmin",
+        "DisableGuestAccount": true,
+        "LimitBlankPasswordUse": true
+      },
+      "SecurityOptions": {
+        "RequireSMBSigning": false,
+        "DisableLMHash": true,
+        "RestrictNTLM": "AuditOnly",
+        "RestrictAnonymousSAM": true,
+        "RestrictAnonymous": 1,
+        "DisableAutoAdminLogon": true,
+        "ClearPageFileAtShutdown": false,
+        "LDAPClientSigning": "NegotiateSigning"
+      },
+      "Services": {
+        "DisableUnnecessaryServices": [
+          "RemoteRegistry"
+        ]
+      },
+      "RegistryHardening": {
+        "DisableAutoRun": true,
+        "EnableDEP": true,
+        "EnableSEHOP": true
+      }
+    },
+    "Moderate": {
+      "Description": "Balanced security and usability - CIS Level 1 inspired",
+      "PasswordPolicy": {
+        "MinimumPasswordLength": 14,
+        "PasswordComplexity": true,
+        "PasswordHistorySize": 24,
+        "MaximumPasswordAge": 60,
+        "MinimumPasswordAge": 1,
+        "LockoutThreshold": 5,
+        "LockoutDuration": 30,
+        "LockoutWindow": 30
+      },
+      "AccountPolicy": {
+        "RenameAdministrator": true,
+        "NewAdministratorName": "SrvAdmin",
+        "DisableGuestAccount": true,
+        "LimitBlankPasswordUse": true,
+        "DisableLocalAccountTokenFilterPolicy": false
+      },
+      "SecurityOptions": {
+        "RequireSMBSigning": true,
+        "DisableLMHash": true,
+        "RestrictNTLM": "DenyAllServers",
+        "RestrictAnonymousSAM": true,
+        "RestrictAnonymous": 2,
+        "DisableAutoAdminLogon": true,
+        "ClearPageFileAtShutdown": false,
+        "LDAPClientSigning": "RequireSigning",
+        "EveryoneIncludesAnonymous": false,
+        "NoLMHash": true,
+        "RequireNTLMv2": true,
+        "DisableIPSourceRouting": true
+      },
+      "Services": {
+        "DisableUnnecessaryServices": [
+          "RemoteRegistry",
+          "SSDPSRV",
+          "upnphost",
+          "WerSvc",
+          "XblAuthManager",
+          "XblGameSave"
+        ]
+      },
+      "RegistryHardening": {
+        "DisableAutoRun": true,
+        "EnableDEP": true,
+        "EnableSEHOP": true,
+        "DisableWindowsScriptHost": false,
+        "RestrictDriverInstallation": true,
+        "DisableIPv6": false,
+        "EnableFirewall": true,
+        "DisableNetBIOS": false
+      },
+      "UAC": {
+        "EnableLUA": true,
+        "AdminApprovalMode": true,
+        "PromptOnSecureDesktop": true
+      }
+    },
+    "Strict": {
+      "Description": "Maximum security hardening for high-security environments",
+      "PasswordPolicy": {
+        "MinimumPasswordLength": 16,
+        "PasswordComplexity": true,
+        "PasswordHistorySize": 24,
+        "MaximumPasswordAge": 45,
+        "MinimumPasswordAge": 2,
+        "LockoutThreshold": 3,
+        "LockoutDuration": 60,
+        "LockoutWindow": 60
+      },
+      "AccountPolicy": {
+        "RenameAdministrator": true,
+        "NewAdministratorName": "SecAdmin",
+        "DisableGuestAccount": true,
+        "LimitBlankPasswordUse": true,
+        "DisableLocalAccountTokenFilterPolicy": false,
+        "FilterAdministratorToken": true
+      },
+      "SecurityOptions": {
+        "RequireSMBSigning": true,
+        "DisableLMHash": true,
+        "RestrictNTLM": "DenyAll",
+        "RestrictAnonymousSAM": true,
+        "RestrictAnonymous": 2,
+        "DisableAutoAdminLogon": true,
+        "ClearPageFileAtShutdown": true,
+        "LDAPClientSigning": "RequireSigning",
+        "EveryoneIncludesAnonymous": false,
+        "NoLMHash": true,
+        "RequireNTLMv2": true,
+        "DisableIPSourceRouting": true,
+        "EnableICMPRedirect": false,
+        "DisableSavePassword": true,
+        "RequireSecuritySignature": true
+      },
+      "Services": {
+        "DisableUnnecessaryServices": [
+          "RemoteRegistry",
+          "SSDPSRV",
+          "upnphost",
+          "WerSvc",
+          "XblAuthManager",
+          "XblGameSave",
+          "MapsBroker",
+          "lfsvc",
+          "diagnosticshub.standardcollector.service",
+          "DiagTrack",
+          "dmwappushservice",
+          "TrkWks"
+        ]
+      },
+      "RegistryHardening": {
+        "DisableAutoRun": true,
+        "EnableDEP": true,
+        "EnableSEHOP": true,
+        "DisableWindowsScriptHost": false,
+        "RestrictDriverInstallation": true,
+        "DisableIPv6": false,
+        "EnableFirewall": true,
+        "DisableNetBIOS": true,
+        "EnableSMBEncryption": true,
+        "DisableLLMNR": true,
+        "DisableWPAD": true,
+        "EnableAppLocker": false,
+        "RequireKernelModeSignatures": true
+      },
+      "UAC": {
+        "EnableLUA": true,
+        "AdminApprovalMode": true,
+        "PromptOnSecureDesktop": true,
+        "ElevateSignedOnly": true
+      },
+      "NetworkSecurity": {
+        "DisableLLMNR": true,
+        "DisableNetBIOS": true,
+        "DisableMDNS": true,
+        "RequireSMB3": true
+      }
+    }
+  },
+  "Common": {
+    "CreateBackup": true,
+    "EnableLogging": true,
+    "GenerateReport": true,
+    "ValidateAfterApply": true
+  }
+}
