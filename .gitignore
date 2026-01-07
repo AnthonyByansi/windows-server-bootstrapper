@@ -1,0 +1,63 @@
+# Logs
+Logs/
+*.log
+logs/
+
+# Backups
+Backups/
+*.bak
+*.backup
+*_backup/
+
+# Reports
+Reports/
+*.html
+*.htm
+
+# PowerShell
+*.ps1xml
+.vscode/
+.vs/
+
+# IDE and Editor
+*.vscode/
+*.code-workspace
+.idea/
+*.swp
+*.swo
+*~
+
+# System files
+Thumbs.db
+.DS_Store
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Build artifacts
+obj/
+bin/
+*.nupkg
+
+# Test coverage
+coverage/
+.coverage
+
+# Node modules (if used for any tooling)
+node_modules/
+
+# Python virtual environments (if used)
+venv/
+env/
+
+# Execution policy cache
+ExecutionPolicy.reg
+
+# User-specific files
+*.user
+*.suo
