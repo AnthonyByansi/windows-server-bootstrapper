@@ -118,6 +118,16 @@ The script generates detailed HTML reports including:
 - Validation results
 - Execution timeline
 
+## Versioning
+
+This project follows [Semantic Versioning](https://semver.org/) (MAJOR.MINOR.PATCH).
+
+- **Current Version:** v1.0.0
+- **Release Tags:** All releases are tagged in git (e.g., `v1.0.0`, `v1.1.0`)
+- **Version Management:** Use `Manage-Version.ps1` to bump versions and create release tags
+
+For details on versioning strategy and release process, see [VERSIONING.md](VERSIONING.md).
+
 ## Rollback
 
 All original configurations are backed up to `./Backups/` with timestamps. To rollback:
@@ -182,5 +192,5 @@ Use at your own risk.
 ---
 
 **Created:** January 2026  
-**Version:** 1.0.0  
+**Version:** 1.0.0 ([Release History](CHANGELOG.md) | [Versioning](VERSIONING.md))  
 **Tested on:** Windows Server 2019/2022
